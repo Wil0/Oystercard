@@ -7,4 +7,11 @@ fail "new oyster doesn't have £0 on it" unless oyster.balance == 0
 # As a customer
 # I want to add money to my card
 oyster.top_up(6)
-fail "oyster did not top up" unless oyster.balance == @balance
+# fail "oyster did not top up" unless oyster.balance == @balance
+
+# In order to protect my money from theft or loss
+# As a customer
+# I want a maximum limit (of £90) on my card
+
+oyster.top_up(85)
+fail "topped up over limit" if oyster.balance > 90
